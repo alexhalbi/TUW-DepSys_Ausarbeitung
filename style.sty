@@ -1,0 +1,135 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{style}
+
+%TO ENABLE biber, give argument biber:
+%e.g. \usepackage[biber]{assignment}
+%else use \usepackage{assignment}
+
+%layout options:
+\KOMAoptions{
+            footsepline=on,
+            paper=A4,
+            DIV=14,            %see scrguide: 
+                                %   DIV=15: Border-up=19,80mm
+                                %           Boder-inside=14,00mm
+                                %           Print-Space=168,00mm x 237,60mm
+            %BCOR=12mm          %bindcorrect-factor   
+            }
+
+\RequirePackage[footsepline=on]{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\automark[section]{section}
+
+\RequirePackage[english,ngerman]{babel}
+\RequirePackage{xltxtra}                                %TODO: german umlaut
+
+\RequirePackage[autostyle,
+            %german=guillemets,              %TODO: which should i choose
+            german=quotes                  %TODO: which should i choose
+                ]{csquotes}
+
+\RequirePackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usetikzlibrary{positioning,decorations}
+\usetikzlibrary{shadows,shapes}
+\usetikzlibrary{circuits}
+\RequirePackage[german,vario]{fancyref}
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\RequirePackage{subcaption}
+\RequirePackage{amsmath}
+\RequirePackage{enumerate}
+\RequirePackage{pifont}
+\RequirePackage{graphicx}
+\RequirePackage{pgfplots}
+\RequirePackage{pgfplotstable}
+\RequirePackage{relsize}
+\RequirePackage{siunitx}
+\RequirePackage{listings}
+\RequirePackage{schemabloc}
+\RequirePackage{textcomp}
+
+\definecolor{listred}{rgb}{0.6,0,0} % for strings
+\definecolor{listgreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{listpurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{listdocblue}{rgb}{0.25,0.35,0.75} % javadoc
+\lstset{
+    basicstyle=\ttfamily,
+    keywordstyle=\color{listpurple}\bfseries,
+    stringstyle=\color{listred},
+    commentstyle=\color{listgreen},
+    morecomment=[s][\color{listdocblue}]{/**}{*/},
+    numbers=left,
+    numberstyle=\tiny\color{black},
+    stepnumber=1,
+    numbersep=10pt,
+    mathescape=true,
+    tabsize=4,
+    showspaces=false,
+    breaklines        = true,
+    breakatwhitespace = true,
+    breakindent       = 2ex,
+    showstringspaces=false}
+
+\lstset{morekeywords={
+        bind, end},%
+        emph={expr, eval, cdf},
+        emphstyle={\color{blue!70!black}\bfseries},
+        alsoletter=.,%
+        sensitive=false,%
+        escapeinside={(*@}{@*)},
+        morecomment=[l]{*\ },%
+    } % just to better see the listings
+
+\RequirePackage[pdfencoding=auto,pdfusetitle,
+    hyperfootnotes,
+    colorlinks          %TODO: remove me
+    ]{hyperref}
+
+\newif\ifassignment@biber
+\DeclareOption{biber}{\assignment@bibertrue}
+\DeclareOption{nobiber}{\assignment@biberfalse}
+
+\ExecuteOptions{nobiber} % default is nobiber
+
+\ProcessOptions\relax
+
+\ifassignment@biber
+    \RequirePackage[
+          backend=biber,
+          style=alphabetic,
+          %style=authoryear,
+          %style=authoryear-icomp,
+          %style=numeric,
+          language=german,
+          sortlocale=de_DE,
+            ]{biblatex}
+
+    \AtEveryBibitem{%
+      \clearfield{note}%
+    }
+
+    \SetCiteCommand{\parencite}
+    \MakeInnerQuote{|}
+\fi
+
+%no widows and orpans
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+%% Title formatting
+\def\authorname#1{{\larger[2]#1}}
+\def\studentnumber#1{{\larger[1] Matr.: #1}}
+\def\curriculum#1{{Curriculum: #1}}
+\def\email#1{\smaller[1]\ttfamily{#1}}
+
+
+\newcommand{\bchar}[1]{\textsf{\textbf{#1}}}
+
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+\pgfplotsset{compat=1.10}
+
+\endinput
