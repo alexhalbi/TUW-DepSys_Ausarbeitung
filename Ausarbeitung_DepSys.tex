@@ -144,7 +144,7 @@ z.B.   funktionelle,  Reliability-, Safety-Ebene
 
 \newpage
 \section{Kapitel: Fault-tolerance and Modeling}
-\subsection{Failure Probability \& Reliability\\{\itshape\smaller[2] Ausarb. 2017}}
+\subsection[Failure Probability \& Reliability]{Failure Probability \& Reliability\\{\itshape\smaller[2] Ausarb. 2017}}
 Die \textbf{Failure Probability} $Q(t)$ (Fehlerwahrscheinlichkeit) ist die Wahrscheinlichkeit, dass ein System in einer Zeitspanne $[0:t]$ \textbf{nicht} nach der Spezifikation verhält.\\
 Die \textbf{Reliability} $R(t)$ (Zuverlässigkeit eines Systems) ist die Wahrscheinlichkeit, dass ein System in einer Zeitspanne $[0:t]$ nach der Spezifikation verhält.
 \[R(t)=1-Q(t)\]
@@ -221,7 +221,7 @@ Die \textbf{Reliability} $R(t)$ (Zuverlässigkeit eines Systems) ist die Wahrsch
     \end{enumerate}
     In diesem Fall ist $\lambda$ definiert, als ($\lambda(t)=\alpha\lambda(\lambda t)^{\alpha-1}$) und somit gilt für $R(t)=e^{-(\lambda t)^\alpha}$.
     \[f(t)=\frac{d R(t)}{dt}=-\alpha\lambda(\lambda t)^{\alpha-1} e^{-(\lambda t)^{\alpha}}\]
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}
     \begin{axis}[
@@ -317,13 +317,13 @@ In Halbleiteranwendungen wird häufig die \textbf{Lognormal-verteilte Fehlerrate
 
         Die Integration der Differentialgleichungen ergibt die MTTF.
 
-    \begin{figure}[h!]
+    \begin{figure}[H]
     \centering
     \includegraphics[page=31, width=0.2\linewidth,angle=-90,clip=true,trim=330 380 80 80]{DCS-2012-P3}
     \caption{Markov-Modell von 2 Parallelen Komponenten}
     \end{figure}
 
-    \begin{figure}[h!]
+    \begin{figure}[H]
     \centering
     \includegraphics[page=32, width=0.1\linewidth,angle=-90,clip=true,trim=250 380 200 80]{DCS-2012-P3}
     \caption{Übergänge identischer Komponenten zusammenfassen}
@@ -690,7 +690,7 @@ werden als Fehlerursache nicht in Betracht gezogen.
 \centering
 \includegraphics[width=10cm]{event-tree-analysis.png}
 \caption{ETA eines Brandausbruchs}
-\label{fig:FTA}
+\label{fig:ETA}
 \end{figure}
     \item[Failure Modes and Effect Analysis (FMEA)]
 Der Designer muss systematisch die Fragen „Wie kann eine Komponente ausfallen?“ 
@@ -1032,7 +1032,7 @@ Fehlerursache, die toleriert oder verhindert werden soll.
         anderen Systems, wenn das fehlerhafte system mit diesem interagiert.
         Fehlerzustand wird durchgereicht und beeinträchtigt den Service.
 \end{description}
-siehe \Fref{fig:failure_chain}
+siehe Abbildung \ref{fig:failure_chain}.
 \begin{figure}
     \centering
     \scalebox{0.8}{
