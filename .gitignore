@@ -1,0 +1,16 @@
+*.aux
+*.log
+*.maf
+*.mtc
+*.mtc0
+*.out
+*.raw
+*.synctex.gz
+
+#gnuplottex
+*-gnuplottex-fig*.gnuplot
+*-gnuplottex-fig*.pdf
+*.net
+*.bbl
+*.blg
+*.toc
