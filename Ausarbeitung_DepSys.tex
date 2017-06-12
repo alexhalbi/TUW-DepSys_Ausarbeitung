@@ -98,8 +98,7 @@ wodurch   das   Zugsystem   nicht
 funktionsfähig ist).
 
 Wenn es keinen sicheren, nicht-funktionalen Systemzustand gibt (d.h. das System
-ist  \textbf{fail-
-operational}), sind Safety und Reliability jedoch eng verwandt (z.B.
+ist  \textbf{fail-operational}), sind Safety und Reliability jedoch eng verwandt (z.B.
 Fly-by-Wire). Denn nach dem Start gibt es keinen safe (nicht-funktionierenden)
 system state.
 
@@ -198,7 +197,7 @@ Die \textbf{Reliability} $R(t)$ (Zuverlässigkeit eines Systems) ist die Wahrsch
     \[f(t)=\frac{dQ(t)}{dt}=-\frac{dR(t)}{dt}\]
     wobei hier $Q(t)$ die Fehlerwahrscheinlichkeit angibt.
     Die \textbf{Fehlerrate} $\lambda(t)$ ist definiert als die Anzahl der Fehler im Zeitabschnitt
-    $\Delta t$, mit der Einheit FIT (failures in time) in Bezug auf die Anzahl der korrekten Komponenten zum Zeitpunkt
+    $\Delta t$, mit der Einheit FIT (failures in time), in Bezug auf die Anzahl der korrekten Komponenten zum Zeitpunkt
     $t$:
     \[\lambda(t)=\frac{f(t)}{R(t)}=-\frac{dR(t)}{dt}\frac{1}{R(t)}\]
 
@@ -206,9 +205,8 @@ Die \textbf{Reliability} $R(t)$ (Zuverlässigkeit eines Systems) ist die Wahrsch
     werden kann, als $R(t)=e^{-\lambda t}$. Damit lautet die Failure Density (Fehlerdichte):
     \[f(t)=\frac{d R(t)}{dt}=-\lambda e^{-\lambda t}\]
 
-    Das bedeutet, es ist viel einfacher zu berechnen durch eine konstante
-    Fehlerrate. Außerdem können die Fehlerraten aus bekannten Bauteilen aus
-    Tabellen ausgelsen werden und direkt in der Formel verwendet werden.
+    Das bedeutet, es ist viel einfacher zu berechnen. Außerdem können die Fehlerraten aus bekannten Bauteilen aus
+    den dazugehörigen Spezifikationen ausgelsen werden und direkt in der Formel verwendet werden.
     Außerdem werden von einigen Modellen (z.B. Markov-Modellen) nur konstante Fehlerraten unterstützt.
 
     Wenn die Fehlerraten mit der Zeit zu oder abnehmen, kann auch die \textbf{Weibull
@@ -248,16 +246,18 @@ Die \textbf{Reliability} $R(t)$ (Zuverlässigkeit eines Systems) ist die Wahrsch
     \caption{Weibull verteilte Fehlerrate}
 \end{figure}
 
-In Halbleiteranwendungen wird häufig die \textbf{Lognormal-verteilte Fehlerrate} verwendet. Diese passt sich gut an die Halbleiterlebensdauer an.
-\subsection{Wahrscheinlichkeitstheoretische Modellierung was gehört dazu?}
-    Simple Blockdiagram, Arbitrary\footnote{arbitrary: frei, beliebig, willkürlich} Blockdiagram, Markov Model, General Stochastic
-\subsection[Simple/ Arbitrary Block Diagram, Markov Model, General Stochastic
-    Petri Net?]{Simple/ Arbitrary Block Diagram, Markov Model, General Stochastic
-    Petri Net?\\{\itshape\smaller[2] 7.2013, Ausarb. 2009}}
-    Alle diese Modelle gehören zur strukturellen wahrscheinlichkeitstheoretischen Modellierung.
-    Zur vereinfachung werden die folgenden Annahmen gemacht: die Teilkomponenten sind unterscheidbar und jede Komponente hat eine eigene Fehlerrate. Modell basiert auf den Verbindungen der einzelnen Komponenten.
+In Halbleiteranwendungen wird häufig die \textbf{Logarythmischnormalverteilte Fehlerrate} verwendet. Diese passt sich gut an die Halbleiterlebensdauer an.
+\subsection[Wahrscheinlichkeitstheoretische Modellierung]{Wahrscheinlichkeitstheoretische Modellierung\\{\itshape\smaller[2] 7.2013, Ausarb. 2009}}
+Zur Vereinfachung werden die folgenden Annahmen gemacht: 
+\begin{itemize}
+	\item Die Teilkomponenten sind unterscheidbar
+	\item Jede Komponente hat eine eigene Fehler-/Reperaturrate
+	\item Modell basiert auf den Verbindungen der einzelnen Komponenten
+\end{itemize}
+\subsubsection{Was gehört dazu?}
+    Simple Blockdiagram, Arbitrary\footnote{arbitrary: frei, beliebig, willkürlich} Blockdiagram, Markov Model, General Stochastic Petri Net
     \subsubsection{Simple Block Diagram}
-    Modellierung beliebiger Kombinationen von seriell und parallel verbundenen Komponenten:
+    Modellierung beliebiger Kombinationen von seriell und parallel verbundenen Komponenten.
     \minisec{Für serielle Verbindungen gilt:} die Reliability nimmt ab, je mehr Komponenten seriell geschaltet werden:
     \[R_{seriell}(t)=\prod_{i=1}^n R_i(t)\]
     \[Q_{seriell}(t)=1-R_{seriell}=1-\prod_{i=1}^n R_i(t)=1-\prod_{i=1}^n (1-Q_i(t))\]
@@ -320,13 +320,13 @@ In Halbleiteranwendungen wird häufig die \textbf{Lognormal-verteilte Fehlerrate
     \begin{figure}[H]
     \centering
     \includegraphics[page=31, width=0.2\linewidth,angle=-90,clip=true,trim=330 380 80 80]{DCS-2012-P3}
-    \caption{Markov-Modell von 2 Parallelen Komponenten}
+    \caption{Markov-Modell von 2 parallelen Komponenten}
     \end{figure}
 
     \begin{figure}[H]
     \centering
     \includegraphics[page=32, width=0.1\linewidth,angle=-90,clip=true,trim=250 380 200 80]{DCS-2012-P3}
-    \caption{Übergänge identischer Komponenten zusammenfassen}
+    \caption{Übergänge identischer Komponenten (gleiche Failure Rates) zusammenfassen}
     \label{fig:zusammenfassung}
     \end{figure}
     z.B: die Differentialgleichungen aus \Fref{fig:zusammenfassung}:
@@ -351,7 +351,7 @@ In Halbleiteranwendungen wird häufig die \textbf{Lognormal-verteilte Fehlerrate
 Das   Verhalten   des   Systems   ist   zu   jedem   Zeitpunkt   unabhängig   von   der   Vorgeschichte, 
 abgesehen vom letzten Zustand.
 
-\subsubsection{GSPN General Stochastic Petri Net}
+\subsubsection{General Stochastic Petri Net (GSPN)}
 Erweiterung von basic Petri Nets: Übergangs-delays können deterministisch gleich Null oder 
 Zufalls-variablen unterschiedlichster Verteilungen (z.B. exponentiell) sein.
 
@@ -377,7 +377,7 @@ Die folgenden Schritte müssen durchgeführt werden:
 
 
 
-\subsection[Modellierung für Software]{Modellierung für Software?\\{\itshape\smaller[2] Ausarb. 2017}}
+\subsection[Modellierung für Software]{Modellierung für Software\\{\itshape\smaller[2] Ausarb. 2017}}
 \textbf{Probabilistic Structural Modeling}  ist für Software nicht gut geeignet, da es bei Software 
 keine ausreichend definierten individuellen Komponenten gibt, die Komplexität sehr hoch ist, 
 keine  \textbf{Unabhängigkeit der Fehler}  angenommen werden kann (da nur eine CPU und ein 
@@ -385,13 +385,13 @@ Speicherbereich   für   verschiedene   Prozesse   existiert),   Aspekte   der  
 nicht modelliert werden können und Parallelität und Synchronisierung nicht beachtet werden (außer bei GSPNs).
 Das \textbf{Reliability Growth Model} ist besser für die Modellierung von Software geeignet.
 
-\subsection[Reliability Growth Model]{Reliability Growth Model?\\{\itshape\smaller[2] Ausarb. 2017, Ausarb. 2009}}
-Reliablility Growth Models basieren auf der Idee einer Iterativen Verbesserung nach dem Schema testing $\rightarrow$  correction $\rightarrow$ re-testing
+\subsection[Reliability Growth Model]{Reliability Growth Model\\{\itshape\smaller[2] Ausarb. 2017, Ausarb. 2009}}
+Reliablility Growth Models basieren auf der Idee einer iterativen Verbesserung nach dem Schema testing $\rightarrow$  correction $\rightarrow$ re-testing
 
 Dabei werden keine Annahmen über die System-Struktur (insbesondere über die Aufteilung 
 in Komponenten) getroffen.
 
-Z.B. Software reliability growth:
+Z.B. Software Reliability Growth:
 Software-Test  $\rightarrow$  Aufzeichnen der Zeitperioden zwischen aufeinander folgenden Fehlern  $\rightarrow$
 ausbessern der Fehler
 
@@ -399,8 +399,8 @@ Ausgehend von den gemessenen Zeiträumen (Perioden) kann auf die zukünftigen Pe
 zwischen zwei Fehlern geschlossen werden (und z.B. als MTTF angegeben werden)
 \minisec{Ziele:}
 \begin{itemize}
-\item Disziplinierte und Kontrollierte Verbesserung der Reliability
-\item Extrapolieren von Zukünftiger Reliability auf Basis der Aktuellen Reliability
+\item Disziplinierte und kontrollierte Verbesserung der Reliability
+\item Extrapolieren von zukünftiger Reliability auf Basis der aktuellen Reliability
 \item Abschätzen des Aufwands für Test, Verbesserung und Re-Test
 \end{itemize}
 \minisec{Vorteile:}
@@ -441,7 +441,7 @@ Gibt an welche Fehler von einem Server gehandhabt werden müssen.
 \minisec{Failure Semantics}
 Server können Fehler nur behandeln, wenn die Wahrscheinlichkeit, dass der Fehler nicht behandelt wird niedrig genug ist.
 
-Daraus ergibt sich, dass die Assumtion Coverage die Wahrscheinlichkeit angibt, dass ein Fehler Mode, definiert in der Failure Semantic, die Wirklichkeit abdeckt.
+Daraus ergibt sich, dass die Assumtion Coverage die Wahrscheinlichkeit angibt, dass ein Fehler Zustand, definiert in der Failure Semantic, die Wirklichkeit abdeckt.
 
     \textbf{Beispiel}:  \textbf{2-Aktive-Redundanz}  (zwei   parallel   geschaltete   
     Komponenten)
@@ -454,7 +454,7 @@ dass   sich   Komponenten  \textbf{fail-consistent}  verhalten,   was   einer
     Assumption-Coverage   von 
     annähernd 1 entspricht (byzantinische Fehler sind sehr selten).
 
-    Das bedeutet, die assumption-coverage von einem active-redundant system muss immer kleiner als 1 sein.
+    Das bedeutet, die Assumption-Coverage von einem Active-Redundant System muss immer kleiner als 1 sein.
 
 \begin{figure}[H]
     \centering
@@ -501,14 +501,14 @@ dass   sich   Komponenten  \textbf{fail-consistent}  verhalten,   was   einer
     \label{fig:actv_red}
     \end{figure}
 		
-Beim Markov- Graph muss die Coverage entsprechend berücksichtigt werden. D.h. die Wahrscheinlichkeit das der Fehler innerhalb der fault- semantic liegt muss bei den "normalen" Übergängen berücksichtigen. Mit der Gegenwahrscheinlichkeit führt dann zusätzlich noch eine Kante direkt zum Fehlzustand. 
+Beim Markov- Graph muss die Coverage entsprechend berücksichtigt werden. D.h. die Wahrscheinlichkeit das der Fehler innerhalb der fault-semantic liegt muss bei den "`normalen"' Übergängen berücksichtigt werden. Mit der Gegenwahrscheinlichkeit führt dann zusätzlich noch eine Kante direkt zum Fehlzustand. 
 
 \newpage
 \section{Kapitel: Processes and Certification Standards}
 \subsection[Probability/Severity]{Probability/Severity\\{\itshape\smaller[2] Ausarb. 2009}}
 Das   primäre   Ziel   von   Safety   ist   eine   umgekehrt   proportionale   Beziehung   zwischen 
 Wahrscheinlichkeit und Schwere eines Fehlers herzustellen: Wahrscheinliche Fehler sollen 
-keine   schwerwiegenden   Konsequenzen   haben,   während sehr sehr selten Fehler   mit   katastrophalen 
+keine   schwerwiegenden   Konsequenzen   haben,   während sehr sehr seltene Fehler   mit   katastrophalen 
 Auswirkungen auftreten dürfen.
 \minisec{Klassen der Severity:}
 \begin{itemize}
@@ -576,7 +576,7 @@ crash, fail-stop)
 \begin{itemize}
     \item Benign\footnote{benign: gutartig} Failures:  Höhe des Schadens im Fehlerfall ungefähr gleich des Nutzens des 
 funktionsfähigen Systems
-    \item Catastrophic   failures:  Schaden   im   Fehlerfall   wesentlich   Höher   als   Nutzen   des 
+    \item Catastrophic   failures:  Schaden   im   Fehlerfall   wesentlich   höher   als   Nutzen   des 
 funktionsfähigen   Systems,   insbesondere   Schaden   für   menschliche   Gesundheit/ 
 menschliches Leben.
 \end{itemize}
@@ -591,8 +591,8 @@ Wobei $R_0$ konstant ist, $T$ die absolute Temperatur $[^\circ K]$ angibt, $E_A$
     \includegraphics[page=14, width=0.3\linewidth,angle=-90,clip=true,trim=295 360 60 100]{DCS-2012-P5}
     \caption{Arrhenius equation}
     \end{figure}
-\subsection[Accelerated Stress Testing?]{Accelerated Stress Testing?}
-Wird verwendet um die Infant-Mortality-Failures schon vor der Auslieferung zu erkennen, 
+\subsection[Accelerated Stress Testing]{Accelerated Stress Testing}
+Wird verwendet um die Infant-Mortality-Failures\footnote{Kinderkrankheiten} schon vor der Auslieferung zu erkennen, 
 und um die zu erwartende Fehlerrate mit relativ kurzen Testperioden abschätzen zu können.
 Möglichkeiten des künstlichen Beschleunigens von Fehlerauftritts-Intervallen:
 
@@ -603,10 +603,10 @@ Möglichkeiten des künstlichen Beschleunigens von Fehlerauftritts-Intervallen:
     \item Erhöhung der Spannung
     \item Erhöhung der Temperatur und der Spannung
     \item Erhöhung der Temperatur, Spannung und Feuchtigkeit
-    \item Beschießen mit Alpha-Partikeln
+    \item Beschießen mit Alpha-Partikeln von einem Alpha-Strahler
 \end{itemize}
 Für   Software   nicht   anwendbar,   da   nicht   bekannt   ist,   wie   man   \enquote{Stress}   für   Software 
-charakterisieren und simulieren kann. Außerdem gibt es keine Gleichung wie die von Arrhenius, die die aktivierung von Fehlern beschreibt.
+charakterisieren und simulieren kann. Außerdem gibt es keine Gleichung wie die von Arrhenius, die die Aktivierung von Fehlern beschreibt.
 
 \subsection[Safety-Analysis]{Safety-Analysis\\{\itshape\smaller[2] Ausarb. 2017, 7.2013, Ausarb. 2009}}
 Die Safety-Analyse beschäftigt sich mit dem gesamten Lebenszyklus eines Projekts, von 
@@ -621,7 +621,7 @@ Hauptfragen der Safety-Analysis sind:
 \item wie wahrscheinlich kommt es zu Hazards \textbf{(Quantitative Analyse)}
 \end{itemize}
 
-Safety Analysis Methodologies:
+\subsubsection{Safety Analysis Methodologies}
 \begin{description}
     \item[Preliminary Hazard Analysis (PHA)]
         Stellt   die   erste   Phase   in   jeder   Safety-Analyse   dar.  System   Hazards,  kritische 
@@ -637,28 +637,27 @@ einer   Check-Liste   abgearbeitet,   um   verschiedene   Typen   von   Abweichu
 spezifizieren: NO, NOT, MORE, LESS, AS WELL AS, PART OF, REVERSE, OTHER 
 THAN
 
-Die Tabellen starten mit einem Keyword (zB.: NOT), danach einer Liste von Fällen (zB.: Behälter leer, ...) und danach einer CONSEQUENCE (zB.: Kraftwerk explodiert)
+Die Tabellen starten mit einem Keyword (zB.: NOT), danach einer Liste von Fällen (zB.: Behälter leer) und danach einer CONSEQUENCE (zB.: Kraftwerk explodiert)
 
 Die   Analyse   wird   von   einem   Team   bestehend   aus   unterschiedlichen   Spezialisten 
 durchgeführt.
 
 Diese   Methode   ist   gut   um   die   Kommunikation   zwischen   beteiligten   Personen   zu 
 erhöhen   und   um  Ausgangspunkte  für  detaillierte   Studien   zu   schaffen,   jedoch   ist   sie 
-nicht gut Standardisiert.
+nicht gut standardisiert.
     \item[Action Error Analysis (AEA)]
 Beschäftigt   sich   mit   den   potentiellen   Fehlern,   die   Menschen   bei   der   Verwendung, 
 Wartung, Kontrolle und Überwachung machen können.
 
 Die einzelnen Schritte in Bedienungsabläufen werden aufgelistet, für jeden Schritt eine 
 Liste möglicher Fehler sowie deren Ursache (gewisse Aktionen nicht durchgeführt, in 
-Falscher   Reihenfolge   durchgeführt,   etc..)   erstellt.   Darauf   aufbauend   kann   analysiert 
+falscher   Reihenfolge   durchgeführt, ...)   erstellt.   Darauf   aufbauend   kann   analysiert 
 werden, wie man Kontrolle über diese Ursachen bekommen kann.
 
-AEA beschäftigt sich nicht mit den Gründen für Bedienungsfehler.
+AEA beschäftigt sich nicht mit den Gründen für Bedienungsfehler. D.h. Intentionen und das Verhalten der Benutzer werden nicht beachtet.
 
 AEA ist besonders für Software im Bereich des User Interface Design wichtig.
 
-Die Intentionen und das Verhalten der Benutzer wird dabei aber nicht beachtet.
     \item[Fault Tree Analysis (FTA)]
 Graphische Repräsentation von Kombinationen, die zu Hazards führen können. Dabei 
 wird vom Hazard als Wurzel des Baums ausgegangen, die Verzweigungen finden an 
@@ -682,7 +681,7 @@ Umgekehrte Vorgehensweise wie bei FTA: es wird mit den Events begonnen.
 
 Kann als quantitative Methode verwendet werden.
 
-Einschränkungen:   Detaillierte   Analysen   können   wegen   des   Großen   Umfangs   nicht 
+Einschränkungen:   Detaillierte   Analysen   können   wegen   des   großen   Umfangs   nicht 
 erstellt werden, parallele Sequenzen, unvollständige, zu frühe oder zu späte Aktionen 
 werden als Fehlerursache nicht in Betracht gezogen.
 
@@ -718,12 +717,12 @@ nicht bedacht, etc.)
 
 \newpage
 \section{Kapitel: System aspects of dependable computers}
-\subsection[Maintenance (warum besser als Fault-Tolerance?)]{Maintenance (warum besser als Fault-Tolerance?)\\{\itshape\smaller[2] Ausarb. 2017, Ausarb. 2009}}
+\subsection[Maintenance (Warum besser als Fault-Tolerance?)]{Maintenance (Warum besser als Fault-Tolerance?)\\{\itshape\smaller[2] Ausarb. 2017, Ausarb. 2009}}
 Maintenance wird benötigt, da es nicht möglich ist ein perfektes System zu designen (Zuverlässigkeit der Komponenten)
 
 Maintenance macht ein System zwar komplexer, aber in wesentlich geringerem Ausmaß als 
 Fault-Tolerance. Dadurch sinkt auch die Wahrscheinlichkeit von \textbf{Design-Faults}.
-Wannimmer es möglich ist, sollte Maintenance der Fehlertoleranz vorgezogen werden.
+Maintenance sollte der Fehlertoleranz, wenn möglich, vorgezogen werden.
 
 Es benötigt Fehlererkennung und Fehlerbeschränkung, aber dafür keine Recovery oder Fehlerbehandlung.
 
@@ -750,7 +749,7 @@ kontrolliert werden kann.
     \item Synchronisation mit der Umgebung
 \end{itemize}
 \minisec{Aspekte}
-Wartungskosten immer mit systemkosten vergleichen, gewünschtes Wartungspersonal(Nummer, Ausbildung, Werkzeug, Wo befinden sie sich, 0-24,...)
+Wartungskosten immer mit Systemkosten vergleichen, gewünschtes Wartungspersonal (Nummer, Ausbildung, Werkzeug, Wo befinden sie sich, 24/7,...)
 
 Eigenes Ersatzteillager oder Ersatzteile erst bestellen, wenn benötigt? 
 
@@ -758,7 +757,7 @@ Außerdem wichtig ist die Dokumentation, geplante Tests, die Systemstruktur, gut
 
 \subsection[Anwendungsspezifische Fehlertoleranz]{Anwendungsspezifische Fehlertoleranz\\{\itshape\smaller[2] Ausarb. 2017, 7.2013}} 
 
-Der physikalische Prozess, mit dem das Computersystem interagiert unterliegt gewissen physikalischen Gesetzen und dadurch Beschränkungen. Diese Beschränkungen können im Computersystem implementiert werden um Fehler zu identifizieren. Die Plausibilitätsprüfungen sind dabei anwendungsspezifisch und ermöglichen ein "fail-stop" Verhalten des Systems. Um ein fail-operational Verhalten des Systems zu implementieren kann zusätzlich eine Abschätzung des Betriebszustandes (state-estimation) erfolgen.
+Der physikalische Prozess, mit dem das Computersystem interagiert unterliegt gewissen physikalischen Gesetzen und dadurch Beschränkungen. Diese Beschränkungen können im Computersystem implementiert werden um Fehler zu identifizieren. Die Plausibilitätsprüfungen sind dabei anwendungsspezifisch und ermöglichen ein fail-stop Verhalten des Systems. Um ein fail-operational Verhalten des Systems zu implementieren kann zusätzlich eine Abschätzung des Betriebszustandes (state-estimation) erfolgen.
 
 \minisec{Beispiel:} Die Messwerte eines Geschwindigkeitsreglers im Auto werden auf plausibilität mit der Motordrehzahl und dem eingelegten Gang gegengeprüft. Im Fehlerfall, kann die Geschwindigkeit damit auch geschätzt werden.
 
@@ -779,14 +778,14 @@ Der physikalische Prozess, mit dem das Computersystem interagiert unterliegt gew
 \end{itemize}
 
 \subsection[Systematische Fehlertoleranz]{Systematische Fehlertoleranz\\{\itshape\smaller[2] 7.2013}} 
-Bei der systematischen Fehlertoleranz werden keine Annahmen über den zugrundeliegenden physikalischen Prozess getroffen sondern eine etwaige Abweichung replizierter Komponenten zur Fehlererkennung eingesetzt. Replika müssen daher im Normalfall korrespondierende Ergebnisse liefern um Abweichungen im Fehlerfall erkennen zu können (replica-determinism). Diese Eigenschaft muss durch ein agreement protocol sichergestellt werden.
+Bei der systematischen Fehlertoleranz werden keine Annahmen über den zugrundeliegenden physikalischen Prozess getroffen sondern eine etwaige Abweichung replizierter Komponenten zur Fehlererkennung eingesetzt. Replika müssen daher im Normalfall korrespondierende Ergebnisse liefern um Abweichungen im Fehlerfall erkennen zu können (replica-determinism). Diese Eigenschaft muss durch ein Agreement Protocol sichergestellt werden.
 
 Bei der systematischen Fehlertoleranz wird davon ausgegangen, dass manche, aber nicht alle Komponenten fehlerhaft sind. (n-resiliency) Ein fail-stop Verhalten kann hier durch die Divergenz von Ergebnissen erreicht werden, ein fail-operational Verhalten durch mehrfach redundante Auslegung von Subsystemen.
 
 \paragraph{Vorteile:}
 \begin{itemize}
 \item    Kein Anwendungswissen erforderlich
-\item    Keine state-estimation erforderlich
+\item    Keine State-Estimation erforderlich
 \item    Unabhängige Bereiche der Applikation
 \item    Qualität des bereitgestellten Dienstes ist unabhängig von Fehlern
 \item    Keine Steigerung der anwendungsspezifischen Komplexität
@@ -807,9 +806,9 @@ Bei der systematischen Fehlertoleranz wird davon ausgegangen, dass manche, aber 
 Im Gegensatz zur systematischen Fehlertoleranz, welch versucht durch die Replikation gleichartiger Komponenten Fehler zu erkennen und zu tolerieren, baut die anwendungsspezifische Fehlertoleranz auf ein Modell der Wirklichkeit auf. Anhand dieses Modells werden bei der anwendungsspezifischen Fehlertoleranz Plausibilitätsprüfungen abgeleitet, welche Fehler erkennen sollen. Des weiteren kann auf Basis des Modells eine Schätzung des Zustands und dadurch ein (eingeschränkter) Betrieb erfolgen.
 \\
 \\
-Bei den Systematischen Fehlertoleranzsystemen wird mit Replizierung gearbeitet, während die Applikationsspezifischen Fehlertoleranzsysteme keine Replizierung benötigen.
+Bei den systematischen Fehlertoleranzsystemen wird mit Replizierung gearbeitet, während die applikationsspezifischen Fehlertoleranzsysteme keine Replizierung benötigen.
 Im Fehlerfall können so bei systematischen Systemen durch Abweichungen die Fehler erkannt werden.
-Plausibilitätschecks sind somit nur für Applikationsspezifische Systeme erforderlich.
+Plausibilitätschecks sind somit nur für applikationsspezifische Systeme erforderlich.
 Bei diesen Systemen ist auch kenntnis der Anwendung erforderlich, bei systematischer Fehlertoleranz nicht.
 
 Bei einem systematischen System kann exakt zwischen einem Fehler und korrektem Verhalten unterschieden werden. Bei Applikationsspezifischer Fehlertoleranz nicht. (Graue Zone)
@@ -818,16 +817,16 @@ Außerdem sind bei der systematischen Fehlertolernaz keine Zustandsabschätzunge
 Bei Applikationsspezifischer Fehlertoleranz gibt es manchmal fehlende oder mangelnde Plausibilitätschecks für mache Anwendungsgebiete.
 Außerdem ist die Qualität der Zustandsschätzungen kleiner, als die bei normaler Anwendung.
 
-die Servicequalität im Fehlerfall bei systematischer Fehlertoleranz ist jedoch mit fehlerhaften replizierten Komponenten unabhängig davon, ob sie fehlerhaft sind, oder nicht.
-Das korrekte system hängt ab von der Anzahl der korrekt funktionierenden Replikationen und deren Fehlersemantik.
+Die Servicequalität im Fehlerfall bei systematischer Fehlertoleranz ist jedoch mit fehlerhaften replizierten Komponenten unabhängig davon, ob sie fehlerhaft sind, oder nicht.
+Das korrekte System hängt ab von der Anzahl der korrekt funktionierenden Replikationen und deren Fehlersemantik.
 
-Beide Systeme bieten Backward recovery, aber das Application Specific system bietet auch forward recovery. Auch ist das Application Specific system günstiger, was die anzahl der komponenten angeht, denn hier fallen keine kosten für die redundanz an.
+Beide Systeme bieten Backward Recovery, aber das applikationsspezifische System bietet auch Forward Recovery. Auch ist das applikationsspezifische System günstiger, was die Anzahl der Komponenten angeht, denn hier fallen keine kosten für die Redundanz an.
 
-Bei der systematischen Fehlertoleranz kommt es zu einer Trennung von fehlertoleranz und applikationsfunktionalität. Außerdem kann die Fehlertolernaz von der applikation transparent behandelt werden. Bei der Applikationsspezifischen Variante sind beide tief ineinander verflochten. 
+Bei der systematischen Fehlertoleranz kommt es zu einer Trennung von Fehlertoleranz und Applikationsfunktionalität. Außerdem kann die Fehlertolernaz von der Applikation transparent behandelt werden. Bei der applikationsspezifischen Variante sind beide tief ineinander verflochten. 
 \minisec{Beide zusammen}
-in der Praxis werden meist beide arten verwendet, da die sicherheit und die Kosten einen Guten Kompromiss erfordern.
+In der Praxis werden meist beide Arten verwendet, da die Sicherheit und die Kosten einen guten Kompromiss erfordern.
 
-Außerdem wäre komplexe Software ohne Fehlertoleranz nicht beherrschbar. Systematische fehlertoleranz erlaubt dabei das Testen und Validieren der Mechanismen unabhängig von der software.
+Außerdem wäre komplexe Software ohne Fehlertoleranz nicht beherrschbar. Systematische Fehlertoleranz erlaubt dabei das Testen und Validieren der Mechanismen unabhängig von der Software.
 \subsection[Replica Determinismus]{Replica Determinismus\\{\itshape\smaller[2]
 7.2013, Ausarb. 2009}}
 \minisec{Definition:}
@@ -857,18 +856,18 @@ synchronisierte lokale Uhren
 \item Unterschiedliche Timeout-Entscheidungen durch Clock-Drifts
 \item Dynamische Scheduling-Entscheidungen (Abarbeitungsreihenfolge)
 \item Verzögerungen beim Übertragen von Nachrichten.
-\item Unterschiedliche Rundung von reelen Zahlen auf unterschiedlichen Implementierungen dabei können unterschiedliche impplementierungen zu auseinandergehenden resultaten führen, wenn die arithmetischen Berechnungen nahe der Grenzen der Äquivalenzklassen liegen. (Boundary Testing)
+\item Unterschiedliche Rundung von reelen Zahlen auf unterschiedlichen Implementierungen dabei können unterschiedliche Implementierungen zu auseinandergehenden Resultaten führen, wenn die arithmetischen Berechnungen nahe der Grenzen der Äquivalenzklassen liegen. (Boundary Testing)
 \end{itemize}
 Kann Replika-Nichtdeterminismus nicht verhindert werden, müssen \textbf{Agreement-Protokolle 
 verwendet werden}. (Auch diese können das Problem jedoch nicht vollständig lösen)
 \subsection[Synchrone vs Asynchrone Systeme]{Synchrone vs Asynchrone Systeme \\{\itshape\smaller[2] 2010}}
 \minisec{Synchroner Prozessor}
-Ein Prozessor ist synchron, wenn er mindestens einen Prozessschritt während $\Delta$ Echtzeitschritten.
+Ein Prozessor ist synchron, wenn er mindestens einen Prozessschritt während $\Delta$ Echtzeitschritten durchführt.
 \minisec{Kommunikation begrenzt}
 Die Kommunikationsverzögerung heißt verzögert, wenn eine Nachricht, die geschickt wurde nach höchstens $\Phi$-Echtzeitschritten am Ziel ankommt (wenn kein Fehler passiert).
 \minisec{Synchrones System}
 Ein System heißt synchron, wenn Prozessoren synchron sind und die Kommunikation begrenzt ist.
-Real-Time systeme sind per definition Synchron.
+Real-Time Systeme sind per definition synchron.
 \minisec{Asynchrones System}
 Ein System heißt asynchron, wenn die Prozessoren asynchron sind, oder die Kommunikation unbegrenzt ist.
 \subsection[Was ist Konsistenz?]{Was ist Konsistenz?\\{\itshape\smaller[2] Ausarb. 2009}}
@@ -911,7 +910,7 @@ In \textbf{synchronen Systemen} geht das schon, sofern die Kriterien für die Fe
 7.2013, Ausarb. 2009}}
 Consistency-Algorithmen   sind   geeignet,   um   für   Konsistenz   unter   den   funktionsfähigen 
 Knoten zu sorgen, selbst wenn sich $k$ Knoten byzantinisch verhalten (bei einer Anzahl von 
-$n>=3k+1$ Knoten insgesamt).
+$n \geq 3k+1$ Knoten insgesamt).
 
 \minisec{Beispiel 1:}
 Annahmen über das Kommunikationssystem:
@@ -956,10 +955,10 @@ Bedingungen erfüllt werden:
 einen korrekten Zustand in endlicher Zeit.
 \paragraph{Closure:}  Wenn   sich   ein   System   in   einem   korrekten   Zustand   befindet,   betritt   es  nie 
 wieder einen inkorrekten Zustand (außer ein weiterer Fehler tritt auf)
-\minisec{weiteres:}
+\minisec{Weiteres:}
 Selbst-stabilisierende Systeme müssen nicht initialisiert werden. Statt Fehler zu verhindern 
 und zu korrigieren, konzentriert sich dieser Ansatz darauf nach einem Fehler wieder einen 
-Konsistenten Zustand zu erreichen.
+konsistenten Zustand zu erreichen.
 
 Selbststabilisierende Systeme müssen nicht initialisiert werden, und können sich von flüchtigen fehlern wieder erholen. (z.B: der \textbf{adaptive DSD-Algorithmus} ist selbststabilisierend)
 
@@ -996,40 +995,37 @@ alle Komponenten, die diese Ressource verwenden.
 \begin{description}
     \item [System on a Chip] (alle Komponenten auf einem Chip), ein Chip für
         alles.
-    \item [Interface design] Komplexe Systeme $\Rightarrow$ einfaches interface,
-        keine verwirrungen
-    \item [Operator] das system benötigt interaktion von Operator.
+    \item [Interface design] Komplexe Systeme $\Rightarrow$ einfaches Interface,
+        keine Verwirrungen
+    \item [Operator] das System benötigt Interaktion von Operator.
     \item [Documentation] das System ist gut dokumentiert. (Fehlerquelle wenn
         schlechte oder keine doku)
     \item [Komplexität] ist immer schwer handhabbar.
-    \item [systemstruktur] ungünstige Systemstruktur (unpassende komponenten) 
-        kann zu wenig vertrauen führen.
-    \item [low dependability of components] das system ist so stark wie das
+    \item [Systemstruktur] ungünstige Systemstruktur (unpassende Komponenten) 
+    \item [low dependability of components] das System ist nur so stark wie das
         schwächste Glied.
     \item [Kein System ist 100\%-ig sicher.]
 \end{description}
-\subsection{Kapitel:}
+\subsection{Kapitel}
 \subsubsection{Mögliche Requirements}
 System Lifetime, difference or no difference between reliability and safety,
 warranty, environmental conditions, vibrations, power supply, \ldots
-\minisec{Stresstests}
-Function Test, Heat Test, Cold Test, Heat storage, Temperature shock, \ldots
-\subsubsection{Beeinträchtigung der Zuverlässigkeit(Dependability):}
+\subsubsection{Beeinträchtigung der Zuverlässigkeit (Dependability)}
 \minisec{Ausfall (failure)}
-Die Einhaltung der Servicespezifikation wird erschwert. (Übergang von korrekten
-zu inkorrektem Service)
+Abweichung vom geplanten/erwarteten Verhalten. 
 \minisec{Fehlerzustand (error)}
-Teil eines Systemzustands, der evtl. zu einem Fehler führen kann.
+Inkorrekter Systemzustand, der zu einem Fehler führen kann.
 \minisec{Fehlerurache (fault)}
-Fehlerursache, die toleriert oder verhindert werden soll.
+Fehlerursache, die toleriert oder verhindert werden soll. (Übergang von korrekten
+zu inkorrektem Service)
 
 \begin{description}
     \item[fault$\rightarrow$error:] Fehlerursache ist aktiv, wenn diese zu einem
         Fehlerzustand führt.
     \item[error$\rightarrow$failure:] Nicht erkannter Fehler ist
-        latent(gebunden) $\Rightarrow$ Fehlererkennung.
+        latent (gebunden) $\Rightarrow$ Fehlererkennung.
     \item[failure$\rightarrow$fault:] Ausfall führt zu einer Fehlerursache eines
-        anderen Systems, wenn das fehlerhafte system mit diesem interagiert.
+        anderen Systems, wenn das fehlerhafte System mit diesem interagiert.
         Fehlerzustand wird durchgereicht und beeinträchtigt den Service.
 \end{description}
 siehe Abbildung \ref{fig:failure_chain}.
@@ -1047,7 +1043,7 @@ siehe Abbildung \ref{fig:failure_chain}.
             \draw[->] (c) to[bend right=45] node[sloped,below,
             align=center]{fault\\activation}(e);
             \draw[->] (e) to[bend right=45] node[sloped,above,
-            align=center]{fault\\activation}(c);
+            align=center]{fault\\deactivation}(c);
             \draw[->] (f) to[bend right=45] node[sloped,above,
             align=center]{service restoration}(c);
             \draw[->] (e) to[bend right=45] node[sloped,below,
@@ -1071,42 +1067,42 @@ Ob ein Fehlerzustand zu einem Ausfall führt, hängt ab von:
 \subsubsection{Mittel der Systemverlässlichkeit}
 \begin{description}
     \item [Fehlervermeidung (fault prevention):] Methoden und Techniken zur
-        vermeidung von drohenden Fehlern.
+        Vermeidung von drohenden Fehlern.
 
-        \textbf{Hardware:} vermeidung von Umwelteinflüssen, qualitativere Komponenten,
+        \textbf{Hardware:} Vermeidung von Umwelteinflüssen, qualitativere Komponenten,
 
-        \textbf{Software:} verwendung von OOD und OO, formale Methoden, klare
+        \textbf{Software:} Verwendung von OOD und OO, formale Methoden, klare
             Designrichtlinien
-    \item [Fehlerkorrektur(fault removal)]
+    \item [Fehlerkorrektur (fault removal)]
         Methoden und Techniken zur reduzierung der Anzahl und der Bedeutung der
         Fehler.
 
-        \textbf{Verifizierung:} entweder statisch(data flow, compiler checks,
+        \textbf{Verifizierung:} entweder statisch (data flow, compiler checks,
             \ldots)
             oder dynamisch (testing, black-box, white box, \ldots)
 
         \textbf{Diagnose:} Erkennen des Fehlers/der Verifizierung stoppte
 
         \textbf{Korrektur:} Den Fehler entfernen
-    \item [Fehlervorhersage(fault forecasting)]: Methoden und Techniken zur
-        evaluierung und modellierung der aktuellen und der zukünftigen Fehler.
+    \item [Fehlervorhersage (fault forecasting)]: Methoden und Techniken zur
+        Evaluierung und Modellierung der aktuellen und der zukünftigen Fehler.
 
         Fehlerevaluierung an System ansetzen. Beispielsweise reliability,
         availability, maintainability, safety
 
-    \item [Fehlertoleranz (fault tolerance)]: Methoden und Techniken die Services zur verfügung
+    \item [Fehlertoleranz (fault tolerance)]: Methoden und Techniken die Services zur Verfügung
         stellen, die selbst im Fehlerfall noch die Spezifikation erfüllen.
     
         \textbf{Fehlererkennung} ist wichtig, um darauf reagieren zu können.
 
-        \textbf{Schadensbegrenzung und -bewertung} bevor auf den fehler reagiert
+        \textbf{Schadensbegrenzung und -bewertung} bevor auf den Fehler reagiert
         wird.
 
         \textbf{Fehler recovery} um den Fehlerzustand zu gunsten eines
-        Fehlerfreien Zustands zu verlassen.
-        Hierbei gibt es 2 Arten: Backward recovery(set system back to previous
+        fehlerfreien Zustands zu verlassen.
+        Hierbei gibt es 2 Arten: Backward Recovery (set system back to previous
         error-free state and reexecute failed processing sequence) und die
-        Forward recovery(system state is set to new error-free system state (for
+        Forward Recovery (system state is set to new error-free system state (for
         real-time systems)).
 
         \textbf{Fehlerbehandlung} um den Fehler nicht sofort wieder zu triggern.
@@ -1114,11 +1110,11 @@ Ob ein Fehlerzustand zu einem Ausfall führt, hängt ab von:
 \subsubsection{Fehlertoleranz und Redundanz}
 \begin{description}
     \item [Einsatzgebiet Information] redundante Information, ECC, robuste
-        datenstrukturen
-    \item [Einsatzgebiet Speicher] replikation der Komponenten (2 CPU's,
+        Datenstrukturen
+    \item [Einsatzgebiet Speicher] Replikation der Komponenten (2 CPU's,
         Uninterruptable Power Supply)
-    \item [Einsatzgebiet Zeit] replikation der Berechnungen (mehrmalige
-        berechnung über verschiedene oder gleiche Algorithmen, mehrmaliges
-        senden der gleichen information.
+    \item [Einsatzgebiet Zeit] Replikation der Berechnungen (mehrmalige
+        Berechnung über verschiedene oder gleiche Algorithmen, mehrmaliges
+        senden der gleichen Information.
 \end{description}
 \end{document}
